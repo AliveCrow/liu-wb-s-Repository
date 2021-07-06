@@ -18,6 +18,8 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "2.3.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
