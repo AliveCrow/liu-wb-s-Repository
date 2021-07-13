@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <Nav title="马雄" description="一个程序员的自留地" />
-    <router-view />
+    <Nav title="echo '刘文博';" />
+    <Container class="container" style="margin-top: 20px">
+      <router-view />
+    </Container>
   </div>
 </template>
 <script>
 import Nav from "./components/Nav";
-
 export default {
   components: {
     Nav,
@@ -21,11 +22,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  max-width: 1000px;
-  margin: 0 auto;
+  background-color: $--background-color;
+  display:flex;
+  flex-direction: column;
+  min-height:100vh;
+  .container{
+    flex:1
+  }
 }
 
-.app-container {
-  margin: 0 auto;
-}
 </style>

@@ -11,12 +11,19 @@ module.exports = {
   devServer: {
     host: "0.0.0.0",
     port: 3333,
-    open: true,
+    open: false,
     overlay: {
       warnings: false,
       errors: true,
     },
     // proxy: {},
+  },
+  css:{
+    loaderOptions:{
+      scss: {
+        prependData: `@import "@/style/_variables.scss";`
+      },
+    },
   },
   configureWebpack: {
     name: "liuwb",

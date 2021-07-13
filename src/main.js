@@ -19,6 +19,8 @@ import {ElementComponentPlugin} from "@/plugins/element-components";
 import {
   Button,Row,Col,Menu,MenuItem
 } from "element-ui";
+import Container from "@/components/Layout/Container";
+import LinkToPage from "@/components/LinkToPage";
 
 //config
 Vue.config.productionTip = false;
@@ -27,8 +29,15 @@ Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 
 Vue.use(ElementComponentPlugin,[
   CollapseTransition,
-  Button,Row,Col,Menu,MenuItem
+  Button,
+  Row,
+  Col,
+  Menu,
+  MenuItem
 ])
+Vue.component('Container',Container)
+Vue.component('LinkToPage',LinkToPage)
+
 
 // Vue.use(Loading.directive);
 // Vue.prototype.$loading = Loading.service;
