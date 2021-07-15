@@ -1,3 +1,4 @@
+
 <template>
   <div class="c-nav">
     <Container style="line-height:60px;height:60px">
@@ -9,15 +10,15 @@
             {{ title }}
           </LinkToPage>
         </div>
-        <div class="c-nav-right">
-          <LinkToPage @click.native="navClick" ref="nav-list" :route="item.route" :key="item.id" v-for="item in NavList"
-          >
-            <div class="nav-item">
-              {{ item.name }}
+            <div class="c-nav-right">
+              <LinkToPage @click.native="navClick" ref="nav-list" :route="item.route" :key="item.id" v-for="item in NavList"
+              >
+                <div class="nav-item">
+                  {{ item.name }}
+                </div>
+              </LinkToPage>
+              <div class="nav-border-bottom"></div>
             </div>
-          </LinkToPage>
-          <div class="nav-border-bottom"></div>
-        </div>
       </div>
     </Container>
   </div>
@@ -26,7 +27,6 @@
 <script>
 import {NavList} from "@/libs/nav-list";
 
-//todo 增加鼠标悬浮,tab底部边框跟着移动
 export default {
   name: "Nav",
   props: ["title", "description"],
@@ -62,8 +62,7 @@ export default {
   watch: {
     immutable: true,
     $route: function (val) {
-      let a = this.NavList.findIndex(r => r.route.path === val.fullPath)
-      // if(val.fullPath === "")
+      this.setInitBorder()
     }
   }
 
@@ -100,10 +99,10 @@ export default {
     }
 
     .nav-item {
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 60px;
       height: 100%;
-      padding: 0 20px;
+      padding: 0 15px;
       cursor: default;
 
       &:hover {

@@ -1,18 +1,16 @@
 <template>
-  <div class="homepage">
-      123213
+  <div class="aside">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index"
+  name: "Aside",
+
 }
 </script>
 
 <style scoped lang="scss">
-.homepage {
-  background-color: red;
-}
 
 </style>

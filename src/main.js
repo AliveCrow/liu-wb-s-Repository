@@ -13,31 +13,32 @@ import 'element-ui/lib/theme-chalk/base.css';
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 
 //plugin
-import {ElementComponentPlugin} from "@/plugins/element-components";
+import {ElComponentPlugin} from "@/plugins/element-components";
 
 //component
 import {
-  Button,Row,Col,Menu,MenuItem
+  Button, Row, Col, Menu, MenuItem, Card
 } from "element-ui";
 import Container from "@/components/Layout/Container";
 import LinkToPage from "@/components/LinkToPage";
+import Framework from "@/components/Layout/Framework";
 
 //config
 Vue.config.productionTip = false;
 //全局配置
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 
-Vue.use(ElementComponentPlugin,[
+Vue.use(ElComponentPlugin,[
   CollapseTransition,
   Button,
   Row,
   Col,
   Menu,
-  MenuItem
+  MenuItem,Card
 ])
 Vue.component('Container',Container)
 Vue.component('LinkToPage',LinkToPage)
-
+Vue.component('Framework',Framework)
 
 // Vue.use(Loading.directive);
 // Vue.prototype.$loading = Loading.service;

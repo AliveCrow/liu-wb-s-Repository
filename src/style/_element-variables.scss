@@ -4,3 +4,45 @@ $--color-primary: teal;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import "~element-ui/packages/theme-chalk/src/index";
 
+
+//https://github.com/ElemeFE/element/pull/20447
+@mixin col-gen($size) {
+  @include res($size) {
+    .el-col-#{$size}-0 {
+      display: none;
+    }
+    @for $i from 0 through 24 {
+      .el-col-#{$size}-#{$i} {
+        @if $i == 0 {
+          display: none;
+        } @else {
+          display: block;
+        }
+        width: (1 / 24 * $i * 100) * 1%;
+      }
+
+      .el-col-#{$size}-offset-#{$i} {
+        margin-left: (1 / 24 * $i * 100) * 1%;
+      }
+
+      .el-col-#{$size}-pull-#{$i} {
+        position: relative;
+        right: (1 / 24 * $i * 100) * 1%;
+      }
+
+      .el-col-#{$size}-push-#{$i} {
+        position: relative;
+        left: (1 / 24 * $i * 100) * 1%;
+      }
+    }
+  }
+}
+
+@include col-gen(xs);
+@include col-gen(sm);
+@include col-gen(md);
+@include col-gen(lg);
+@include col-gen(xl);
+
+
+//

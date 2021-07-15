@@ -1,9 +1,23 @@
+/**
+ * @Description: 输入文件描述信息
+ * @Author liu-wb
+ * @Date 2021/7/15 
+ * @FilePath: src/libs/nav-list.js
+*/
+
 export const NavList=[
     {
         id:"0348d058-ab9b-474e-915c-7e4041ddbc7f",
         name: "首页",
         route:{
             path:"/"
+        }
+    },
+    {
+        id:"9d4404c5-ce18-4a10-9936-382b448a93eb",
+        name: "归档",
+        route:{
+            path:"/archive"
         }
     },
     {
