@@ -22,9 +22,9 @@ export const NavList=[
     },
     {
         id:"133ab4a5-2873-419c-8d9f-433b0804e2d5",
-        name: "分类",
+        name: "标签云",
         route:{
-            path:"/sort"
+            path:"/tag-cloud"
         }
     },
     {

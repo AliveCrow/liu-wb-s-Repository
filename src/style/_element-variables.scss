@@ -1,5 +1,5 @@
 /* 改变主题色变量 */
-$--color-primary: teal;
+$--color-primary: $--text-color;
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import "~element-ui/packages/theme-chalk/src/index";
@@ -46,3 +46,17 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 
 //
+.el-card__header{
+  border-bottom:1px solid $--border-color;
+}
+
+.el-pagination.is-background .el-pager li{
+  border-radius:0;
+  margin: 0;
+  &:hover{
+    background-color: $--text-color;
+ }
+}
+.el-pagination.is-background .el-pager li:not(.disabled):hover{
+  color: #fff;
+}

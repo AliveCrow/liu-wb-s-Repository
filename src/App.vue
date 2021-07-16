@@ -8,7 +8,13 @@
         </el-col>
         <el-col  :xs="0" :sm="0" :md="0" :lg="6" :xl="6">
             <Aside >
-              <Framework :header="false" :border="false" shadow="hover">
+              <Framework class="aside-item" :header="false" :border="false" shadow="hover">
+                search
+              </Framework>
+              <Framework  class="aside-item" :header="false" :border="false" shadow="hover">
+                search
+              </Framework>
+              <Framework  class="aside-item" :header="false" :border="false" shadow="hover">
                 search
               </Framework>
             </Aside>
@@ -35,7 +41,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $--text-color;
   background-color: $--background-color;
   display: flex;
   flex-direction: column;
@@ -65,5 +71,8 @@ export default {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.aside-item{
+  margin-bottom: 10px;
 }
 </style>
