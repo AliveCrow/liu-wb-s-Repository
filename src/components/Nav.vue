@@ -1,4 +1,3 @@
-
 <template>
   <div class="c-nav">
     <Container style="line-height:60px;height:60px">
@@ -10,15 +9,18 @@
             {{ title }}
           </LinkToPage>
         </div>
-            <div class="c-nav-right">
-              <LinkToPage @click.native="navClick" ref="nav-list" :route="item.route" :key="item.id" v-for="item in NavList"
-              >
-                <div class="nav-item">
-                  {{ item.name }}
-                </div>
-              </LinkToPage>
-              <div class="nav-border-bottom"></div>
+        <div class="c-nav-right hidden-xs-only">
+          <LinkToPage @click.native="navClick" ref="nav-list" :route="item.route" :key="item.id" v-for="item in NavList"
+          >
+            <div class="nav-item">
+              {{ item.name }}
             </div>
+          </LinkToPage>
+          <div class="nav-border-bottom"></div>
+        </div>
+        <div class="c-nav-right-dot">
+          ...
+        </div>
       </div>
     </Container>
   </div>
@@ -95,7 +97,7 @@ export default {
       background-color: $--nav-hover-color;
       position: absolute;
       bottom: 0;
-      transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) .25s;
+      transition: all ease-in-out .25s;
     }
 
     .nav-item {
@@ -110,5 +112,15 @@ export default {
       }
     }
   }
+
 }
+.c-nav-right-dot{
+  display:none
+}
+@media (max-width: 768px) {
+  .c-nav-right-dot{
+    display:block
+  }
+}
+
 </style>

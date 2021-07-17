@@ -3,9 +3,11 @@
     <Nav title="console.log('刘文博');"/>
     <Container class="container" style="margin-top: 20px">
       <el-row :gutter="10">
+<!--        <el-col  :xs="1" :sm="1" :md="2" :lg="0" :xl="0"></el-col>-->
         <el-col  :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
           <router-view/>
         </el-col>
+<!--        <el-col  :xs="1" :sm="1" :md="2" :lg="0" :xl="0"></el-col>-->
         <el-col  :xs="0" :sm="0" :md="0" :lg="6" :xl="6">
             <Aside >
               <Framework class="aside-item" :header="false" :border="false" shadow="hover">
@@ -32,6 +34,10 @@ export default {
     Nav,
     Aside
   },
+  data(){
+    return {
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -46,7 +52,6 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
   .container {
     flex: 1
   }
