@@ -7,10 +7,7 @@
 <script>
 export default {
   name: "Aside",
-
-}
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

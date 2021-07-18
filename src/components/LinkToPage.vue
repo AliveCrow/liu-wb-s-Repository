@@ -1,7 +1,7 @@
 <template>
   <div ref="link-to-page-a">
-    <router-link :to="{...route}">
-      <div >
+    <router-link :to="{ ...route }" :active-class="activeClass">
+      <div>
         <slot></slot>
       </div>
     </router-link>
@@ -11,23 +11,27 @@
 <script>
 export default {
   name: "LinkToPage",
-  props:{
-    route:{
-      type:Object,
-      required:true,
-      default:()=>{
+  props: {
+    route: {
+      type: Object,
+      required: true,
+      default: () => {
         return {
-          path:null,
-          name:null
-        }
-      }
-    }
-  }
-}
+          path: null,
+          name: null,
+        };
+      },
+    },
+    activeClass: {
+      type: String,
+      default: "",
+    },
+  },
+};
 </script>
 
 <style scoped>
-a{
+a {
   text-decoration: none;
   color: #fff;
 }

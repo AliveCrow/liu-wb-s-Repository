@@ -5,7 +5,7 @@
  * @FilePath:  $
 -->
 <template>
-  <div>Tag Cloud</div>
+  <div>404</div>
 </template>
 
 <script>

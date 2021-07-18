@@ -10,10 +10,8 @@
 
 <script>
 export default {
-  name: "Container"
-}
+  name: "Container",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

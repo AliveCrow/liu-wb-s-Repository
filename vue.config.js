@@ -18,10 +18,10 @@ module.exports = {
     },
     // proxy: {},
   },
-  css:{
-    loaderOptions:{
+  css: {
+    loaderOptions: {
       scss: {
-        prependData: `@import "@/style/_variables.scss";`
+        prependData: `@import "@/style/_variables.scss";`,
       },
     },
   },

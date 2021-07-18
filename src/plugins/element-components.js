@@ -4,4 +4,3 @@ ElComponentPlugin.install = (Vue, options) => {
     Vue.use(option);
   });
 };
-

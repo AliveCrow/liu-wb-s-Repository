@@ -1,9 +1,8 @@
 /* 改变主题色变量 */
 $--color-primary: $--text-color;
 /* 改变 icon 字体路径变量，必需 */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
 @import "~element-ui/packages/theme-chalk/src/index";
-
 
 //https://github.com/ElemeFE/element/pull/20447
 @mixin col-gen($size) {
@@ -44,19 +43,27 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @include col-gen(lg);
 @include col-gen(xl);
 
-
 //
-.el-card__header{
-  border-bottom:1px solid $--border-color;
+.el-card__header {
+  border-bottom: 1px solid $--border-color;
 }
 
-.el-pagination.is-background .el-pager li{
-  border-radius:0;
+.el-pagination.is-background .el-pager li {
+  border-radius: 0;
   margin: 0;
-  &:hover{
+  &:hover {
     background-color: $--text-color;
- }
+  }
 }
-.el-pagination.is-background .el-pager li:not(.disabled):hover{
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
   color: #fff;
+}
+
+.el-form-item__content {
+  width: 100%;
+}
+.el-input--small .el-input__inner {
+  height: $--search-input-font-size;
+  line-height: calc(2.5rem - 2.5px);
+  font-size: 1rem;
 }

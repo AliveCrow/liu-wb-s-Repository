@@ -5,17 +5,13 @@
  * @FilePath:  $
 -->
 <template>
-<div>
-  Login Page
-</div>
+  <div>Login Page</div>
 </template>
 
 <script>
 export default {
-  name: "index"
-}
+  name: "index",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
