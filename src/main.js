@@ -8,7 +8,7 @@ import "@/style/index.scss";
 require("./libs/Mock/Mock");
 import axios from "@/utils/request";
 import dayjs from "dayjs";
-import { log } from "@/utils/index";
+import {log} from "@/utils/index";
 import "element-ui/lib/theme-chalk/display.css";
 
 //transition
@@ -18,27 +18,27 @@ import "element-ui/lib/theme-chalk/base.css";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 
 //plugin
-import { ElComponentPlugin } from "@/plugins/element-components";
+import {ElComponentPlugin} from "@/plugins/element-components";
 
 //component
 import {
-  Button,
-  Row,
-  Col,
-  Menu,
-  MenuItem,
-  Card,
-  Pagination,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Skeleton,
-  SkeletonItem,
-  Message,
-  Form,
-  FormItem,
-  Input,
-  Tag,
+    Button,
+    Row,
+    Col,
+    Menu,
+    MenuItem,
+    Card,
+    Pagination,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Skeleton,
+    SkeletonItem,
+    Message,
+    Form,
+    FormItem,
+    Input,
+    Tag,
 } from "element-ui";
 import Container from "@/components/Layout/Container";
 import LinkToPage from "@/components/LinkToPage";
@@ -46,22 +46,22 @@ import Framework from "@/components/Layout/Framework";
 import cTag from "@/components/Tag";
 
 Vue.use(ElComponentPlugin, [
-  Button,
-  Row,
-  Col,
-  Menu,
-  MenuItem,
-  Card,
-  Pagination,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Skeleton,
-  SkeletonItem,
-  Form,
-  FormItem,
-  Input,
-  Tag,
+    Button,
+    Row,
+    Col,
+    Menu,
+    MenuItem,
+    Card,
+    Pagination,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Skeleton,
+    SkeletonItem,
+    Form,
+    FormItem,
+    Input,
+    Tag,
 ]);
 
 Vue.component(CollapseTransition.name, CollapseTransition);
@@ -73,7 +73,7 @@ Vue.component("Tag", cTag);
 //config
 Vue.config.productionTip = false;
 //全局配置
-Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
+Vue.prototype.$ELEMENT = {size: "small", zIndex: 3000};
 Vue.prototype.$axios = axios;
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.log = log;
@@ -89,7 +89,7 @@ Vue.prototype.$message = Message;
 // Vue.prototype.$message = Message;
 
 new Vue({
-  router,
-  store,
-  render: (h) => h(App),
+    router,
+    store,
+    render: (h) => h(App),
 }).$mount("#app");

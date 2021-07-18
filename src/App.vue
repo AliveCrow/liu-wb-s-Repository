@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       searchModel: {
-        keyword: "123",
+        keyword: "",
       },
       tagList: [],
       sortList: [],
