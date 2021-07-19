@@ -31,7 +31,7 @@ export const NavList = [
     id: "5983fcb9-e2eb-4da1-a6b5-8ccc4c4c97bd",
     name: "Snippet",
     route: {
-      path: "/login",
+      path: "/snippet",
     },
   },
   {

@@ -8,7 +8,7 @@
     <div v-if="header" slot="header" class="clearfix">
       <slot name="header"></slot>
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%" >
       <slot></slot>
     </div>
     <div v-if="footer" class="framework-footer">
