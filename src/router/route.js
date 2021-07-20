@@ -52,7 +52,7 @@ export const route = [
     name: "About",
     component: About,
     meta: {
-      isAsideAlive: true,
+      isAsideAlive: false,
     },
   },
   {

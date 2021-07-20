@@ -6,6 +6,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "@/style/index.scss";
 
 require("./libs/Mock/Mock");
+require("@/assets/font/myFont");
 import axios from "@/utils/request";
 import dayjs from "dayjs";
 import VueHighlightJS from 'vue-highlightjs';
