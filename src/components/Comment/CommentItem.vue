@@ -14,24 +14,17 @@
         />
       </div>
       <div class="comment-user-info">
-        <span class="comment-user-name">UserName</span>
-        <span class="comment-user-time">2021=03-21</span>
+        <span class="comment-user-name">{{comment.username}}</span>
+        <span class="comment-user-time">{{$dayjs(comment.createTime).format('YYYY-MM-DD hh:mm:ss')}}</span>
       </div>
     </div>
     <div class="comment-content">
-      <span class="reply-to">@UserName</span
-      >曾经接入过百度云加速，节点速度真的是不敢恭维，
-      这么多年了不知道变好了没有，博主最近是流量大增了吗，感觉访问速度有点慢。
-      曾经接入过百度云加速，节点速度真的是不敢恭维，
-      这么多年了不知道变好了没有，博主最近是流量大增了吗，感觉访问速度有点慢。
-      曾经接入过百度云加速，节点速度真的是不敢恭维，
-      这么多年了不知道变好了没有，博主最近是流量大增了吗，感觉访问速度有点慢。
-      曾经接入过百度云加速，节点速度真的是不敢恭维，
-      这么多年了不知道变好了没有，博主最近是流量大增了吗，感觉访问速度有点慢。
+      <span class="reply-to" v-if="!!comment.responder">@UserName</span
+      >{{comment.content}}
       <div>
-        <el-button class="comment-reply">回复</el-button>
+        <el-button class="comment-reply" @click="handleReplay = !handleReplay">回复</el-button>
       </div>
-      <CommentForm></CommentForm>
+      <CommentForm v-show="handleReplay" @submitComment="submitComment"></CommentForm>
       <slot></slot>
     </div>
   </section>
@@ -41,9 +34,20 @@
 import CommentForm from "@/components/Comment/CommentForm";
 export default {
   name: "CommentItem",
+  props:['comment'],
   components: {
     CommentForm,
   },
+  data(){
+    return {
+      handleReplay:false,
+    }
+  },
+  methods:{
+    submitComment(form){
+        this.log(form)
+    }
+  }
 };
 </script>
 

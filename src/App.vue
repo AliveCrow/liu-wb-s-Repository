@@ -31,9 +31,8 @@ import Nav from "./components/Layout/Nav";
 import Aside from "@/components/Layout/Aside";
 import Footer from "@/components/Layout/Footer";
 import Search from "@/components/Search";
-import { TagApi } from "@/api";
+import { TagApi,SortApi } from "@/api";
 import Sort from "@/components/Sort";
-import { SortApi } from "@/api/sorts";
 
 export default {
   components: {

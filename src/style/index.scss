@@ -34,3 +34,10 @@ code {
   border-radius: $--border-radius;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
 }
+
+//评论框input__inner
+.comment-info{
+  .el-input--small .el-input__inner{
+    font-size:.7rem!important;
+  }
+}

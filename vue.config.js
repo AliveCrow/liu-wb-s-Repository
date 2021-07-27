@@ -30,6 +30,7 @@ module.exports = {
     resolve: {
       alias: {
         "@": resolve("src"),
+        "@api": resolve("src/api"),
       },
     },
     plugins: [],

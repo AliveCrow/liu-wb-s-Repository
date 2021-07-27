@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHeader @back="handleBack" content="页面详情" />
+    <PageHeader @back="handleBack" content="页面详情"/>
     <Framework :header="false" :border="false" shadow="never">
       <template>
         <h2>
@@ -18,29 +18,41 @@
         </Info>
       </template>
       <mavon-editor
-        ref="mavon-editor"
-        v-model="value"
-        :boxShadow="editorOptions.boxShadow"
-        :subfield="editorOptions.subfield"
-        :defaultOpen="editorOptions.defaultOpen"
-        :editable="editorOptions.editable"
-        :toolbarsFlag="editorOptions.toolbarsFlag"
-        :codeStyle="editorOptions.codeStyle"
-        :previewBackground="editorOptions.previewBackground"
+          ref="mavon-editor"
+          v-model="value"
+          :boxShadow="editorOptions.boxShadow"
+          :subfield="editorOptions.subfield"
+          :defaultOpen="editorOptions.defaultOpen"
+          :editable="editorOptions.editable"
+          :toolbarsFlag="editorOptions.toolbarsFlag"
+          :codeStyle="editorOptions.codeStyle"
+          :previewBackground="editorOptions.previewBackground"
       />
     </Framework>
     <Framework
-      :header="false"
-      :border="false"
-      shadow="never"
-      style="margin-top: 10px"
+        :header="false"
+        :border="false"
+        shadow="never"
+        style="margin-top: 10px"
     >
       <header>发表评论</header>
-      <CommentForm></CommentForm>
+      <CommentForm @submitComment="submitComment"></CommentForm>
       <CommentContainer>
-        <CommentItem>
-          <CommentItem></CommentItem>
+        <CommentItem v-for="(comment,index) in commentList" :key="comment.id" :comment="comment">
+          <CommentItem v-for="(replay,index) in comment.replayList" :key="replay.id" :comment="replay"></CommentItem>
         </CommentItem>
+<!--        <CommentItem>-->
+<!--          <CommentItem></CommentItem>-->
+<!--          <CommentItem></CommentItem>-->
+<!--        </CommentItem>-->
+<!--        <CommentItem></CommentItem>-->
+        <Page
+            style="text-align:center"
+            :total="total"
+            :pageSize="pageSize"
+            :currentPage="currentPage"
+            @currentChange="handleCurrentChange"
+        />
       </CommentContainer>
     </Framework>
   </div>
@@ -49,10 +61,12 @@
 <script>
 import PageHeader from "@/components/Layout/PageHeader";
 import Info from "@/components/Info";
-import { getWindowScrollHeight } from "@/utils/index";
+import {getWindowScrollHeight} from "@/utils/index";
 import CommentForm from "@/components/Comment/CommentForm";
 import CommentContainer from "@/components/Comment/CommentContainer";
 import CommentItem from "@/components/Comment/CommentItem";
+import Page from "@/components/Layout/Page";
+import {CommentApi} from "@api";
 
 export default {
   name: "Detail",
@@ -62,9 +76,14 @@ export default {
     CommentForm,
     CommentContainer,
     CommentItem,
+    Page
   },
   data() {
     return {
+      total: 20,
+      pageSize: 10,
+      currentPage: 1,
+      commentList:[],
       commentText: "",
       value: `确认下本地仓库关联的远程地址：git remote -v
 
@@ -163,7 +182,9 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    this.getCommentLists()
+  },
   mounted() {
     setTimeout(() => {
       let preDOM = document.querySelectorAll(".v-show-content .hljs");
@@ -184,30 +205,42 @@ export default {
         };
         icon.onclick = (e) => {
           this.$copyText(e.target.previousElementSibling.textContent).then(
-            (e) => {
-              this.$message({
-                type: "success",
-                message: "复制成功",
-                offset: getWindowScrollHeight(window.parent) + 20,
-              });
-            },
-            (e) => {
-              this.$message({
-                type: "error",
-                message: "无法复制",
-                offset: getWindowScrollHeight(window.parent) + 20,
-              });
-            }
+              (e) => {
+                this.$message({
+                  type: "success",
+                  message: "复制成功",
+                  offset: getWindowScrollHeight(window.parent) + 20,
+                });
+              },
+              (e) => {
+                this.$message({
+                  type: "error",
+                  message: "无法复制",
+                  offset: getWindowScrollHeight(window.parent) + 20,
+                });
+              }
           );
         };
       });
     }, 500);
   },
   methods: {
+    async getCommentLists() {
+      let resp = await CommentApi.getCommentLists()
+      this.total = resp.data.total
+      this.pageSize = resp.data.pageSize
+      this.currentPage = resp.data.pageNum
+      this.commentList = resp.data.comments
+    },
+    submitComment(form) {
+      this.log(form)
+    },
     handleBack() {
       this.log("handleBack");
     },
-    click(e) {},
+    handleCurrentChange(currentPage) {
+
+    }
   },
   watch: {},
 };
