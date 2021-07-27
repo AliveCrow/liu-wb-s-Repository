@@ -13,8 +13,12 @@
       </div>
       <div>
         <p>目前共计 12 篇日志，共 873 条评论，加油啊~</p>
-        <TimelineBox >
-          <TimelineItem v-for="item in Timeline"  :date="item.date" :articleList="item.articleList"></TimelineItem>
+        <TimelineBox>
+          <TimelineItem
+            v-for="item in Timeline"
+            :date="item.date"
+            :articleList="item.articleList"
+          ></TimelineItem>
         </TimelineBox>
       </div>
     </Framework>
@@ -27,24 +31,22 @@ import TimelineItem from "@/components/Timeline/TimelineItem";
 
 export default {
   name: "index",
-  components:{
+  components: {
     TimelineBox,
-    TimelineItem
+    TimelineItem,
   },
-  data(){
+  data() {
     return {
-      Timeline:[]
-    }
+      Timeline: [],
+    };
   },
   created() {
-    this.$axios('/timeline').then(res=>{
-      this.log(res)
-      this.Timeline = res.data.timeline
-    })
-  }
+    this.$axios("/timeline").then((res) => {
+      this.log(res);
+      this.Timeline = res.data.timeline;
+    });
+  },
 };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

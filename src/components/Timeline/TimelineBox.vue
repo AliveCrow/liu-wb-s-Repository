@@ -12,10 +12,9 @@
 </template>
 
 <script>
-
 export default {
   name: "TimelineBox",
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -28,8 +27,7 @@ export default {
     border-radius: 5px;
     min-width: 100px;
     display: inline-block;
-    text-align: center
+    text-align: center;
   }
 }
-
 </style>

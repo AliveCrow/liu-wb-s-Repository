@@ -8,7 +8,7 @@ let article = {
   pageSize: 10,
   "articles|10": [
     {
-      "id:": "@id",
+      id: "@id",
       title: "@ctitle",
       content: "@cparagraph(20)",
       createTime: "@datetime()",

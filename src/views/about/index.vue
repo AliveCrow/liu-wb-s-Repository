@@ -4,8 +4,8 @@
       <section class="side">
         <div class="me">
           <!-- <div class="avatar"></div> -->
-          <h1 class="name">{{info.name}}</h1>
-          <p class="job">{{info.job}}</p>
+          <h1 class="name">{{ info.name }}</h1>
+          <p class="job">{{ info.job }}</p>
         </div>
         <div class="unit info">
           <h2 class="unit-title">
@@ -17,15 +17,15 @@
           <div class="unit-content">
             <div class="item">
               <div class="item-title">姓名</div>
-              <div class="item-content">{{info.name}}</div>
+              <div class="item-content">{{ info.name }}</div>
             </div>
             <div class="item">
               <div class="item-title">性别</div>
-              <div class="item-content">{{info.sex}}</div>
+              <div class="item-content">{{ info.sex }}</div>
             </div>
             <div class="item">
               <div class="item-title">年龄</div>
-              <div id="age" class="item-content">{{info.age}}</div>
+              <div id="age" class="item-content">{{ info.age }}</div>
             </div>
           </div>
         </div>
@@ -40,29 +40,29 @@
             <div class="item">
               <div class="item-title">手机</div>
               <div class="item-content">
-                <a href="tel:17607180959">{{info.tel}}</a>
+                <a href="tel:17607180959">{{ info.tel }}</a>
               </div>
             </div>
             <div class="item">
               <div class="item-title">邮箱</div>
               <div class="item-content">
-                <a href="136907108@qq.com">{{info.email}}</a>
+                <a href="136907108@qq.com">{{ info.email }}</a>
               </div>
             </div>
             <div class="item">
               <div class="item-title">主页</div>
               <div class="item-content">
-                <a href="https://dreamsakula.top">{{info.blog}}</a>
+                <a href="https://dreamsakula.top">{{ info.blog }}</a>
               </div>
             </div>
             <div class="item">
               <div class="item-title">微信</div>
-              <div class="item-content">{{info.wechat}}</div>
+              <div class="item-content">{{ info.wechat }}</div>
             </div>
             <div class="item">
               <div class="item-title">Github</div>
               <div class="item-content">
-                <a href="https://github.com/AliveCrow">{{info.github}}</a>
+                <a href="https://github.com/AliveCrow">{{ info.github }}</a>
               </div>
             </div>
           </div>
@@ -76,9 +76,9 @@
           </h2>
           <div class="unit-content">
             <div class="item">
-              <div class="item-title">{{info.eduExperience.name}}</div>
+              <div class="item-title">{{ info.eduExperience.name }}</div>
               <div class="item-content">
-                {{info.eduExperience.content}}
+                {{ info.eduExperience.content }}
               </div>
             </div>
           </div>
@@ -91,12 +91,14 @@
             <span class="title-name">技能清单</span>
           </h2>
           <div class="unit-content">
-            <div class="item" :key="index" v-for="(item,index) in info.skills">
-              <div class="item-title">{{item.name}}</div>
+            <div class="item" :key="index" v-for="(item, index) in info.skills">
+              <div class="item-title">{{ item.name }}</div>
               <div class="item-content">
                 <!-- HTML5 CSS3 JavaScript AJAX HTTP Promise -->
-                <blockquote  v-html="item1"  v-for="(item1,index1) in item.list">
-                </blockquote>
+                <blockquote
+                  v-html="item1"
+                  v-for="(item1, index1) in item.list"
+                ></blockquote>
               </div>
             </div>
           </div>
@@ -113,13 +115,18 @@
           <div class="unit-content">
             <div class="item" v-for="company in info.workExpression">
               <div class="item-title">
-                {{company.companyName}} <a class="link" href="#" v-show="company.isPractice" >实习</a>
+                {{ company.companyName }}
+                <a class="link" href="#" v-show="company.isPractice">实习</a>
               </div>
-              <div class="item-subtitle">{{company.startTime}} - {{company.endTime}}</div>
+              <div class="item-subtitle">
+                {{ company.startTime }} - {{ company.endTime }}
+              </div>
               <div class="item-content">
                 <ul class="item-intro-wrapper">
-                  <blockquote  v-html="item1"  v-for="(item1,index1) in company.workContent">
-                  </blockquote>
+                  <blockquote
+                    v-html="item1"
+                    v-for="(item1, index1) in company.workContent"
+                  ></blockquote>
                 </ul>
               </div>
             </div>
@@ -135,21 +142,19 @@
           <div class="unit-content">
             <div class="item" v-for="project in info.openSourceProject">
               <div class="item-title">
-                {{project.name}}
-                <a class="link" :href="project.source"
-                >源码</a
-                >
-                <a class="link" :href="project.document"
-                >文档</a
-                >
+                {{ project.name }}
+                <a class="link" :href="project.source">源码</a>
+                <a class="link" :href="project.document">文档</a>
               </div>
               <div class="item-subtitle">
-                {{project.description}}
+                {{ project.description }}
               </div>
               <div class="item-content">
                 <ul class="item-intro-wrapper">
-                  <blockquote  v-html="item1"  v-for="(item1,index1) in project.list">
-                  </blockquote>
+                  <blockquote
+                    v-html="item1"
+                    v-for="(item1, index1) in project.list"
+                  ></blockquote>
                 </ul>
               </div>
             </div>
@@ -167,7 +172,7 @@ export default {
   name: "index",
   data() {
     return {
-      info
+      info,
     };
   },
 };
@@ -209,8 +214,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-
 
 .container {
   display: flex;
@@ -403,8 +406,6 @@ body {
   list-style-position: inside;
   padding-left: 0;
 }
-
-
 
 @media print {
   body {

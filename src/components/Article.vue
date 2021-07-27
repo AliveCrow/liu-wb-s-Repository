@@ -6,6 +6,7 @@
       :footer="true"
       v-for="article in articleList"
       :key="article.id"
+      @click.native="PushPage(article)"
     >
       <div slot="header" class="header">
         {{ article.title }}
@@ -31,6 +32,11 @@
 export default {
   name: "Article",
   props: ["articleList"],
+  methods: {
+    PushPage(article) {
+      this.$router.push({ name: "articleDetail", params: { id: article.id } });
+    },
+  },
 };
 </script>
 

@@ -2,21 +2,35 @@
 @import "./reset";
 
 //开启3d加速
-html{
+html {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
-.timeline-body-content{
+//时间线
+.timeline-body-content {
   cursor: default;
-  .el-card__body{
-    padding:10px
+  .el-card__body {
+    padding: 10px;
   }
 }
 
+//编辑器边框隐藏
+.v-note-wrapper {
+  border: none !important;
+}
 
-code{
-  display:block;
+code {
+  display: block;
+}
+.markdown-body pre {
+  background-color: #fff !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+.hljs {
+  border-radius: $--border-radius;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
 }

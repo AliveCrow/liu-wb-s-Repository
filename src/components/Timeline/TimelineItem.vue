@@ -1,16 +1,21 @@
 <template>
   <div>
-    <li class="timeline-header">{{date}}</li>
-    <div class="timeline-body" :key="index" v-for="(item,index) in articleList">
+    <!--    //todo item有多个时item的高度-->
+    <li class="timeline-header">{{ date }}</li>
+    <div
+      class="timeline-body"
+      :key="index"
+      v-for="(item, index) in articleList"
+    >
       <li class="timeline-body-item">
-        <div class="timeline-body-date">{{item.date}}</div>
+        <div class="timeline-body-date">{{ item.date }}</div>
         <div class="timeline-dot"></div>
-<!--        <div class="timeline-body-content">-->
-          <Framework :header="false" class="timeline-body-content" >
-            {{item.title}}
-<!--            <a >{{item.title}}</a>-->
-          </Framework>
-<!--        </div>-->
+        <!--        <div class="timeline-body-content">-->
+        <Framework :header="false" class="timeline-body-content">
+          {{ item.title }}
+          <!--            <a >{{item.title}}</a>-->
+        </Framework>
+        <!--        </div>-->
       </li>
     </div>
   </div>
@@ -19,12 +24,11 @@
 <script>
 export default {
   name: "TimelineItem",
-  props: ['date','articleList']
-}
+  props: ["date", "articleList"],
+};
 </script>
 
 <style scoped lang="scss">
-
 .timeline {
   &-header {
     font-size: 1rem;
@@ -34,7 +38,7 @@ export default {
     border-radius: 5px;
     min-width: 100px;
     display: inline-block;
-    text-align: center
+    text-align: center;
   }
   &-dot {
     height: 10px;
@@ -54,7 +58,7 @@ export default {
       bottom: 15px;
       width: 5px;
       background-color: #555;
-      height:50px;
+      height: 50px;
     }
 
     &::after {
@@ -64,7 +68,7 @@ export default {
       top: 15px;
       width: 5px;
       background-color: #555;
-      height:50px;
+      height: 50px;
     }
   }
   &-body {
@@ -79,15 +83,15 @@ export default {
       left: 7px;
     }
     &-date {
-      min-width:50px;
+      min-width: 50px;
     }
     &-content {
-      position:relative;
+      position: relative;
       margin-left: 20px;
       overflow: initial;
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 0;
@@ -97,10 +101,10 @@ export default {
         transform: translateY(-50%);
         border-style: solid;
         border-width: 10px;
-        border-color: transparent #EBEEF5 transparent transparent;
+        border-color: transparent #ebeef5 transparent transparent;
       }
-      &:after{
-        content: '';
+      &:after {
+        content: "";
         position: absolute;
         width: 0;
         height: 0;
@@ -111,12 +115,8 @@ export default {
         border-style: solid;
         border-width: 10px;
         border-color: transparent #fff transparent transparent;
-
       }
     }
-
   }
 }
-
-
 </style>

@@ -10,34 +10,39 @@
       <el-row :gutter="10" style="margin-bottom: 10px">
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <Framework
-              bodyStyle="background-color: #282c34;color: #fff"
-              class="snippet"
-              :header="false"
-              :footer="false"
-              @click.native="showDialog"
+            bodyStyle="background-color: #282c34;color: #fff"
+            class="snippet"
+            :header="false"
+            :footer="false"
+            @click.native="showDialog"
           >
             CSS溢出
           </Framework>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <Framework
-              bodyStyle="background-color: #282c34"
-              class="snippet"
-              :header="false"
-              :footer="false"
+            bodyStyle="background-color: #282c34"
+            class="snippet"
+            :header="false"
+            :footer="false"
           ></Framework>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <Framework
-              bodyStyle="background-color: #282c34"
-              class="snippet"
-              :header="false"
-              :footer="false"
+            bodyStyle="background-color: #282c34"
+            class="snippet"
+            :header="false"
+            :footer="false"
           ></Framework>
         </el-col>
       </el-row>
     </div>
-    <el-dialog title="CSS溢出" :visible.sync="dialogVisible" append-to-body fullscreen>
+    <el-dialog
+      title="CSS溢出"
+      :visible.sync="dialogVisible"
+      append-to-body
+      fullscreen
+    >
       <pre v-highlightjs>
                <code class="javascript" style="text-align:left;">
                  {{ code }}
@@ -51,6 +56,8 @@
 </template>
 
 <script>
+import { getWindowScrollHeight } from "@/utils";
+
 export default {
   name: "index",
   data() {
@@ -90,14 +97,25 @@ export default {
     showDialog() {
       this.dialogVisible = true;
     },
-    copy(){
-      this.$message({
-        type:'success',
-        message:'复制成功'
-      })
-      this.dialogVisible = false
-
-    }
+    copy() {
+      this.$copyText(this.code).then(
+        (e) => {
+          this.$message({
+            type: "success",
+            message: "复制成功",
+            offset: getWindowScrollHeight(window.parent) + 20,
+          });
+          this.dialogVisible = false;
+        },
+        (e) => {
+          this.$message({
+            type: "error",
+            message: "无法复制",
+            offset: getWindowScrollHeight(window.parent) + 20,
+          });
+        }
+      );
+    },
   },
 };
 </script>
@@ -125,7 +143,8 @@ code {
   &::-webkit-scrollbar-corner,
     /* 滚动条角落 */
   &::-webkit-scrollbar-thumb,
-  &::-webkit-scrollbar-track { /*滚动条的轨道*/
+  &::-webkit-scrollbar-track {
+    /*滚动条的轨道*/
     border-radius: 4px;
   }
 

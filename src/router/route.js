@@ -6,7 +6,10 @@ import Snippet from "@/views/snippet/index";
 import About from "@/views/about/index";
 import NotFound from "@/views/not-found";
 
+import { ArticleRoute } from "@/router/article";
+
 export const route = [
+  ...ArticleRoute,
   {
     path: "/",
     name: "HomePage",

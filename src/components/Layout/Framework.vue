@@ -8,16 +8,22 @@
     <div v-if="header" slot="header" class="clearfix">
       <slot name="header"></slot>
     </div>
-    <div style="width: 100%" >
+    <div style="width: 100%" class="card-body">
       <slot></slot>
     </div>
-    <div v-if="footer" class="framework-footer">
-      <slot name="footer"></slot>
+    <div v-if="footer">
+      <Info>
+        <slot name="footer"></slot>
+      </Info>
     </div>
+    <!--    <div v-if="footer" class="framework-footer">-->
+    <!--      -->
+    <!--    </div>-->
   </el-card>
 </template>
 
 <script>
+import Info from "@/components/Info";
 export default {
   name: "Framework",
   props: {
@@ -41,6 +47,9 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  components: {
+    Info,
   },
   // ['header','bodyStyle','shadow','border']
   /**

@@ -58,10 +58,13 @@ export default {
   data() {
     return {
       NavList,
+      routeMap: ["Homepage", "Archive", "TagCloud", "Snippet", "About"],
     };
   },
   mounted() {
-    this.setInitBorder();
+    if (this.routeMap.forEach((r) => this.$route.name.includes(r))) {
+      this.setInitBorder();
+    }
   },
   methods: {
     navClick(e) {
@@ -95,7 +98,9 @@ export default {
   watch: {
     immutable: true,
     $route: function (val) {
-      this.setInitBorder();
+      if (this.routeMap.forEach((r) => val.name.includes(r))) {
+        this.setInitBorder();
+      }
     },
   },
 };
@@ -143,9 +148,11 @@ export default {
     }
   }
 }
+
 .c-nav-right-dot {
   display: none;
 }
+
 @media (max-width: 768px) {
   .c-nav-right-dot {
     display: block;
