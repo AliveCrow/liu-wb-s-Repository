@@ -6,7 +6,7 @@ import Timeline from "@/libs/Mock/Timeline";
 import Comment from "@/libs/Mock/Comment";
 
 Mock.setup({
-  timeout: "0-500",
+  timeout: "0",
 });
 
 Mock.mock("/articles", Article);

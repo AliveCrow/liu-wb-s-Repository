@@ -33,6 +33,7 @@ import Footer from "@/components/Layout/Footer";
 import Search from "@/components/Search";
 import { TagApi,SortApi } from "@/api";
 import Sort from "@/components/Sort";
+import {mapMutations} from "vuex";
 
 export default {
   components: {
@@ -52,10 +53,12 @@ export default {
     };
   },
   mounted() {
+    this.initEmoji();
     this.getTagList();
     this.getSortList();
   },
   methods: {
+    ...mapMutations(['initEmoji']),
     async getSortList() {
       let resp = await SortApi.getSortLists();
       if (resp.status === 200) {

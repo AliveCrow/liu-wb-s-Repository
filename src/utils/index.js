@@ -1,13 +1,3 @@
-/**
- * @description 测试环境下的log,生产环境不会显示
- * @param content
- * @param type
- */
-export let log = (content, type = "log") => {
-  if (process.env.NODE_ENV === "development") {
-    console && console[type](content);
-  }
-};
 
 // 计算年龄
 /**

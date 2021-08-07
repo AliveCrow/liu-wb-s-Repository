@@ -33,16 +33,16 @@ export default {
   created() {
     this.getArticleList();
     TagApi.getTagLists().then((res) => {
-      this.log(res);
+      this.$log.print(res);
     });
   },
   methods: {
     handleCurrentChange(currentPage) {
-      this.log(currentPage);
+      this.$log.print(currentPage);
     },
     async getArticleList() {
       let resp = await ArticleApi.getArticleLists();
-      this.log(resp);
+      this.$log.print(resp);
       let { total, pageSize, currentPage } = resp.data;
       if (resp.status === 200) {
         this.articleList = resp.data.articles;

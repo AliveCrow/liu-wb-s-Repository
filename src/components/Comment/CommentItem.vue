@@ -32,6 +32,7 @@
 
 <script>
 import CommentForm from "@/components/Comment/CommentForm";
+
 export default {
   name: "CommentItem",
   props:['comment'],
@@ -45,7 +46,7 @@ export default {
   },
   methods:{
     submitComment(form){
-        this.log(form)
+        this.$log.print(form)
     }
   }
 };

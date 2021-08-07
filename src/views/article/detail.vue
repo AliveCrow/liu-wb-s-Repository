@@ -27,6 +27,7 @@
           :toolbarsFlag="editorOptions.toolbarsFlag"
           :codeStyle="editorOptions.codeStyle"
           :previewBackground="editorOptions.previewBackground"
+          :externalLink="externalLink"
       />
     </Framework>
     <Framework
@@ -85,92 +86,7 @@ export default {
       currentPage: 1,
       commentList:[],
       commentText: "",
-      value: `确认下本地仓库关联的远程地址：git remote -v
-
-本地切换到需要提交的分支 git checkout xxx
-
-本地git仓库切换/关联天梯远程git仓库：git remote set-url origin 远程仓库地址
-
-注意：远程仓库地址必须用http地址
-
-git remote -v 确认远程仓库是否切换
-
----------------------------------
-
-切换完仓库后不要急着push
-
-去天梯对应仓库新建分支
-
-![](http://markdown-image-space.dreamsakula.top/image/20210618140147.png)
-
-push你的本地代码
-
-> 如果在pull 过程中报错：fatal: refusing to merge unrelated histories;
-> 可以用git pull --allow-unrelated-histories 药到病除好了;
-> 合并冲突后，接下来可以开心的push了（push提示输入的用户名/密码就是天梯的账号密码）
-
-
-\`\`\`js
-export default {
-  bind (el, binding) {
-    // 双击触发复制
-    if (binding.modifiers.dblclick) {
-      el.addEventListener('dblclick', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-    // 点击icon触发复制
-    else if (binding.modifiers.icon) {
-      if (el.hasIcon) return
-      const iconElement = document.createElement('i')
-      iconElement.setAttribute('class', 'el-icon-document-copy')
-      iconElement.setAttribute('style', 'margin-left:5px')
-      el.appendChild(iconElement)
-      el.hasIcon = true
-      iconElement.addEventListener('click', () => handleClick(el.innerText))
-      iconElement.style.cursor = 'copy'
-    }
-    // 单击触发复制
-    else {
-      el.addEventListener('click', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-  }
-}
-
-
-\`\`\`
-# 12312
-\`\`\`js
-export default {
-  bind (el, binding) {
-    // 双击触发复制
-    if (binding.modifiers.dblclick) {
-      el.addEventListener('dblclick', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-    // 点击icon触发复制
-    else if (binding.modifiers.icon) {
-      if (el.hasIcon) return
-      const iconElement = document.createElement('i')
-      iconElement.setAttribute('class', 'el-icon-document-copy')
-      iconElement.setAttribute('style', 'margin-left:5px')
-      el.appendChild(iconElement)
-      el.hasIcon = true
-      iconElement.addEventListener('click', () => handleClick(el.innerText))
-      iconElement.style.cursor = 'copy'
-    }
-    // 单击触发复制
-    else {
-      el.addEventListener('click', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-  }
-}
-
-
-\`\`\`
-
-`,
+      value: '',
       editorOptions: {
         boxShadow: false,
         subfield: false, //true： 双栏(编辑预览同屏)， false： 单栏(编辑预览分屏)
@@ -180,51 +96,74 @@ export default {
         codeStyle: "atom-one-dark",
         previewBackground: "#fff",
       },
+      externalLink:{
+        markdown_css: function() {
+          // 这是你的markdown css文件路径
+          return '/mavon-editor/markdown-css/github-markdown.min.css'
+        },
+        hljs_js: function() {
+          // 这是你的hljs文件路径
+          return '/mavon-editor/highlight/highlight.min.js'
+        },
+        katex_css: function() {
+          // 这是你的katex配色方案路径路径
+          return '/mavon-editor/KaTex/katex.min.css'
+        },
+        katex_js: function() {
+          // 这是你的katex.js路径
+          return '/mavon-editor/KaTex/katex.min.js'
+        }
+      }
     };
   },
   created() {
     this.getCommentLists()
+
   },
   mounted() {
-    setTimeout(() => {
-      let preDOM = document.querySelectorAll(".v-show-content .hljs");
-      preDOM.forEach((dom) => {
-        let icon = document.createElement("i");
-        icon.classList.add("el-icon-copy-document");
-        icon.style.position = "absolute";
-        icon.style.top = "10px";
-        icon.style.right = "10px";
-        icon.style.height = "50px";
-        icon.style.fontSize = "1.5rem";
-        dom.appendChild(icon);
-        icon.onmouseenter = () => {
-          icon.style.color = "#67c23a";
-        };
-        icon.onmouseleave = () => {
-          icon.style.color = "#eee";
-        };
-        icon.onclick = (e) => {
-          this.$copyText(e.target.previousElementSibling.textContent).then(
-              (e) => {
-                this.$message({
-                  type: "success",
-                  message: "复制成功",
-                  offset: getWindowScrollHeight(window.parent) + 20,
-                });
-              },
-              (e) => {
-                this.$message({
-                  type: "error",
-                  message: "无法复制",
-                  offset: getWindowScrollHeight(window.parent) + 20,
-                });
-              }
-          );
-        };
-      });
-    }, 500);
+    this.setCopeIcon()
   },
   methods: {
+    setCopeIcon(){
+      setTimeout(() => {
+        let preDOM = document.querySelectorAll(".v-show-content .hljs");
+        preDOM.forEach((dom) => {
+          let icon = document.createElement("i");
+          icon.classList.add("el-icon-copy-document");
+          icon.style.position = "absolute";
+          icon.style.top = "10px";
+          icon.style.right = "10px";
+          icon.style.height = "50px";
+          icon.style.fontSize = "1.5rem";
+          dom.appendChild(icon);
+          icon.onmouseenter = () => {
+            icon.style.color = "#67c23a";
+          };
+          icon.onmouseleave = () => {
+            icon.style.color = "#eee";
+          };
+          icon.onclick = (e) => {
+            this.$copyText(e.target.previousElementSibling.textContent).then(
+                (e) => {
+                  this.$message({
+                    type: "success",
+                    message: "复制成功",
+                    offset: getWindowScrollHeight(window.parent) + 20,
+                  });
+                },
+                (e) => {
+                  this.$message({
+                    type: "error",
+                    message: "无法复制",
+                    offset: getWindowScrollHeight(window.parent) + 20,
+                  });
+                }
+            );
+          };
+        });
+        this.$forceUpdate()
+      }, 2500);
+    },
     async getCommentLists() {
       let resp = await CommentApi.getCommentLists()
       this.total = resp.data.total
@@ -233,10 +172,10 @@ export default {
       this.commentList = resp.data.comments
     },
     submitComment(form) {
-      this.log(form)
+      this.$log.print(form)
     },
     handleBack() {
-      this.log("handleBack");
+      this.$router.push({name:"HomePage"})
     },
     handleCurrentChange(currentPage) {
 
@@ -247,6 +186,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import url('/mavon-editor/highlight/styles/atom-one-dark.min.css');
 h2 {
   font-size: 2rem;
   line-height: 2.5rem;

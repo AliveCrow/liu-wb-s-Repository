@@ -4,20 +4,20 @@
       <div class="c-nav-wrapper">
         <div class="c-nav-left">
           <LinkToPage
-            :route="{
+              :route="{
               path: '/',
             }"
           >
             {{ title }}
           </LinkToPage>
         </div>
-        <div class="c-nav-right hidden-xs-only">
+        <div class="c-nav-right hidden-md-and-down">
           <LinkToPage
-            @click.native="navClick"
-            ref="nav-list"
-            :route="item.route"
-            :key="item.id"
-            v-for="item in NavList"
+              @click.native="navClick"
+              ref="nav-list"
+              :route="item.route"
+              :key="item.id"
+              v-for="item in NavList"
           >
             <div class="nav-item">
               {{ item.name }}
@@ -31,10 +31,10 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :key="item.id" v-for="item in NavList">
                 <LinkToPage
-                  @click.native="navClick"
-                  ref="nav-list"
-                  :route="item.route"
-                  active-class="active-page"
+                    @click.native="navClick"
+                    ref="nav-list"
+                    :route="item.route"
+                    active-class="active-page"
                 >
                   <div class="nav-item" style="color: #555">
                     {{ item.name }}
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { NavList } from "@/libs/nav-list";
+import {NavList} from "@/libs/nav-list";
 
 export default {
   name: "Nav",
@@ -62,31 +62,33 @@ export default {
     };
   },
   mounted() {
-    if (this.routeMap.forEach((r) => this.$route.name.includes(r))) {
+    this.routeMap.forEach((r) => {
+      if (this.$route.name.includes(r)) {
+      }
       this.setInitBorder();
-    }
+    })
   },
   methods: {
     navClick(e) {
-      let { NavBorderBottom, NavContainer } = this;
+      let {NavBorderBottom, NavContainer} = this;
       let rightDOM = NavContainer.getBoundingClientRect();
       let offsetX = e.target.getBoundingClientRect().left - rightDOM.left;
       NavBorderBottom.style.width = `${
-        e.target.getBoundingClientRect().width
+          e.target.getBoundingClientRect().width
       }px`;
       NavBorderBottom.style.left = `${offsetX}px`;
     },
     setInitBorder() {
-      let { NavBorderBottom, NavContainer } = this;
+      let {NavBorderBottom, NavContainer} = this;
       let a = this.NavList.findIndex(
-        (r) => r.route.path === this.$route.fullPath
+          (r) => r.route.path === this.$route.fullPath
       ); //路由对应的nav的index
       let initNavDOM = document.querySelectorAll(".nav-item")[a]; //路由所在nav项
       let offsetX =
-        initNavDOM.getBoundingClientRect().left -
-        NavContainer.getBoundingClientRect().left; //需要偏移的量
+          initNavDOM.getBoundingClientRect().left -
+          NavContainer.getBoundingClientRect().left; //需要偏移的量
       NavBorderBottom.style.width = `${
-        initNavDOM.getBoundingClientRect().width
+          initNavDOM.getBoundingClientRect().width
       }px`;
       NavBorderBottom.style.left = `${offsetX}px`;
     },
@@ -98,9 +100,11 @@ export default {
   watch: {
     immutable: true,
     $route: function (val) {
-      if (this.routeMap.forEach((r) => val.name.includes(r))) {
+      this.routeMap.forEach((r) => {
+        if (val.name.includes(r)) {
+        }
         this.setInitBorder();
-      }
+      })
     },
   },
 };
@@ -153,7 +157,7 @@ export default {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   .c-nav-right-dot {
     display: block;
   }

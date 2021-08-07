@@ -35,6 +35,13 @@ export const NavList = [
     },
   },
   {
+    id: "534d6c7c-89d7-45a3-8120-6af8c9bd0347",
+    name: "项目",
+    route: {
+      path: "/project",
+    },
+  },
+  {
     id: "c9d670a6-e851-4ab6-93f2-754921855a54",
     name: "关于",
     route: {

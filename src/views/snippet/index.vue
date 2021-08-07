@@ -21,19 +21,21 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <Framework
-            bodyStyle="background-color: #282c34"
+            bodyStyle="background-color: #282c34;color: #fff"
             class="snippet"
             :header="false"
             :footer="false"
-          ></Framework>
+            @click.native="showDialog"
+          >123</Framework>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
           <Framework
-            bodyStyle="background-color: #282c34"
+            bodyStyle="background-color: #282c34;color: #fff"
             class="snippet"
             :header="false"
             :footer="false"
-          ></Framework>
+            @click.native="showDialog"
+          >456</Framework>
         </el-col>
       </el-row>
     </div>
@@ -63,34 +65,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
-
-      code: `
-export default {
-  bind (el, binding) {
-    // 双击触发复制
-    if (binding.modifiers.dblclick) {
-      el.addEventListener('dblclick', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-    // 点击icon触发复制
-    else if (binding.modifiers.icon) {
-      if (el.hasIcon) return
-      const iconElement = document.createElement('i')
-      iconElement.setAttribute('class', 'el-icon-document-copy')
-      iconElement.setAttribute('style', 'margin-left:5px')
-      el.appendChild(iconElement)
-      el.hasIcon = true
-      iconElement.addEventListener('click', () => handleClick(el.innerText))
-      iconElement.style.cursor = 'copy'
-    }
-    // 单击触发复制
-    else {
-      el.addEventListener('click', () => handleClick(el.innerText))
-      el.style.cursor = 'copy'
-    }
-  }
-}
-`,
+      code: '',
     };
   },
   methods: {

@@ -41,13 +41,18 @@
       <el-form-item>
         <el-popover placement="bottom" width="200" trigger="click">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-            <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth"
-            >定时任务补偿
-            </el-tab-pane
-            >
+            <el-tab-pane :key="key" v-for="(value,key,index) in emojiList" :label="key" :name="key">
+              <ul>
+                <li v-for="item in value" :key="item.char" style="float:left" @click="handleClick(item)"
+                    class="emoji-item">
+                 {{ item.char }}
+                </li>
+              </ul>
+            </el-tab-pane>
+            <!--            <el-tab-pane label="Nature" name="Nature">Nature</el-tab-pane>-->
+            <!--            <el-tab-pane label="Objects" name="Objects">Objects</el-tab-pane>-->
+            <!--            <el-tab-pane label="Places" name="Places">Places</el-tab-pane>-->
+            <!--            <el-tab-pane label="Symbols" name="Symbols">Symbols</el-tab-pane>-->
           </el-tabs>
           <el-button slot="reference">表情</el-button>
         </el-popover>
@@ -58,8 +63,10 @@
 
   </div>
 </template>
-
 <script>
+
+import {mapState} from "vuex";
+
 export default {
   name: "CommentForm",
   data() {
@@ -84,17 +91,25 @@ export default {
           {required: false, message: '', trigger: 'blur'},
         ]
       },
-      activeName: ''
+      activeName: 'people',
 
     }
   },
+  computed: {
+    ...mapState(['emojiList'])
+  },
+
+  mounted() {
+    this.activeName = 'people'
+  },
   methods: {
     handleClick(val) {
+      this.$log.pretty('Click', val.char)
     },
     handleComment(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$emit('submitComment',this.commentForm)
+          this.$emit('submitComment', this.commentForm)
         } else {
           console.log('error submit!!');
           return false;
@@ -106,7 +121,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+li.emoji-item {
+  padding: 5px 10px
+}
 
+li {
+  transition: all 0.08s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #eee;
+    box-shadow: 0 0 1px rgba(#000, .5);
+    border-radius: 4px;
+
+  }
+}
 
 .comment-form {
   padding: 5px 0;
@@ -115,6 +143,7 @@ export default {
     display: flex;
     gap: 20px;
     margin: 20px 0;
+
     .el-form-item--small.el-form-item {
       flex-grow: 1;
     }
@@ -124,5 +153,7 @@ export default {
   .comment-btn {
     margin-left: 10px;
   }
+
+
 }
 </style>

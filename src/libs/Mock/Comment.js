@@ -6,7 +6,7 @@ let comment= {
     total: "@integer(1,100)",
     pageNum: 1,
     pageSize: 10,
-    "comments|10": [
+    "comments|2": [
         {
             id: "@id",
             username: "@cname()",
@@ -14,7 +14,7 @@ let comment= {
             createTime: "@datetime()",
             author: "@cname()",
             responder:null, //回复谁的
-            "replayList|10": [
+            "replayList|2": [
                 {
                     id: "@id",
                     username: "@cname",

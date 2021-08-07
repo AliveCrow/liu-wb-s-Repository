@@ -67,3 +67,18 @@ $--font-path: "~element-ui/lib/theme-chalk/fonts";
   line-height: calc(2.5rem - 2.5px);
   font-size: 1rem;
 }
+
+
+.el-popover{
+  width: 800px!important;
+  font-size:20px!important;
+  .el-tabs__content{
+    height:300px;
+    overflow: auto
+  }
+}
+.project{
+  .el-card__body{
+    padding: 0!important;
+  }
+}

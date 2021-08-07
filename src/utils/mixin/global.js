@@ -1,5 +1,5 @@
 export default {
   created() {
-    this.log("global created");
+    this.$log.print("global created");
   },
 };

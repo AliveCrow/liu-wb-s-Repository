@@ -27,5 +27,6 @@ export default {
   gap: 2rem;
   color: $--second-text-color;
   font-size: 0.8rem;
+  align-items: center;
 }
 </style>

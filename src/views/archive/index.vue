@@ -42,7 +42,7 @@ export default {
   },
   created() {
     this.$axios("/timeline").then((res) => {
-      this.log(res);
+      this.$log.print(res);
       this.Timeline = res.data.timeline;
     });
   },

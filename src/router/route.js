@@ -51,6 +51,14 @@ export const route = [
     },
   },
   {
+    path: "/project",
+    name: "Project",
+    component: ()=> import("@/views/project/index"),
+    meta: {
+      isAsideAlive: false,
+    },
+  },
+  {
     path: "/about",
     name: "About",
     component: About,
