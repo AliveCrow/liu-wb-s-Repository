@@ -96,8 +96,8 @@
               <div class="item-content">
                 <!-- HTML5 CSS3 JavaScript AJAX HTTP Promise -->
                 <blockquote
-                  v-html="item1"
-                  v-for="(item1, index1) in item.list"
+                    v-html="item1"
+                    v-for="(item1, index1) in item.list"
                 ></blockquote>
               </div>
             </div>
@@ -124,8 +124,34 @@
               <div class="item-content">
                 <ul class="item-intro-wrapper">
                   <blockquote
-                    v-html="item1"
-                    v-for="(item1, index1) in company.workContent"
+                      v-html="item1"
+                      v-for="(item1, index1) in company.workContent"
+                  ></blockquote>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="unit project">
+          <h2 class="unit-title">
+            <svg class="title-icon icon" aria-hidden="true">
+              <use xlink:href="#icon-code"></use>
+            </svg>
+            <span class="title-name">项目经历</span>
+          </h2>
+          <div class="unit-content">
+            <div class="item" v-for="project in info.projectExpression">
+              <div class="item-title">
+                {{ project.name }}
+              </div>
+              <div class="item-subtitle">
+                {{ project.description }}
+              </div>
+              <div class="item-content">
+                <ul class="item-intro-wrapper">
+                  <blockquote
+                      v-html="item1"
+                      v-for="(item1, index1) in project.list"
                   ></blockquote>
                 </ul>
               </div>
@@ -144,7 +170,7 @@
               <div class="item-title">
                 {{ project.name }}
                 <a class="link" :href="project.source">源码</a>
-                <a class="link" :href="project.document">文档</a>
+                <a class="link" :href="project.preview">预览</a>
               </div>
               <div class="item-subtitle">
                 {{ project.description }}
@@ -152,8 +178,8 @@
               <div class="item-content">
                 <ul class="item-intro-wrapper">
                   <blockquote
-                    v-html="item1"
-                    v-for="(item1, index1) in project.list"
+                      v-html="item1"
+                      v-for="(item1, index1) in project.list"
                   ></blockquote>
                 </ul>
               </div>
@@ -184,6 +210,7 @@ export default {
   list-style-position: inside;
   text-align: left;
 }
+
 strong {
   color: #52c41a;
   font-size: 1rem;
