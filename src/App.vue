@@ -17,7 +17,6 @@
     </Container>
     <Container class="container" style="margin-top: 20px" v-else>
       <el-row :gutter="10">
-        <!--        <el-col  :xs="1" :sm="1" :md="2" :lg="0" :xl="0"></el-col>-->
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
           <router-view />
         </el-col>
